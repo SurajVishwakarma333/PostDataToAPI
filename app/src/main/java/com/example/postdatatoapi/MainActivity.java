@@ -113,5 +113,93 @@ public class MainActivity extends AppCompatActivity {
         // a json object request.
         queue.add(request);
     }
-
 }
+//    Getting Started with Android Volley :-
+//
+//    To integrate Volley in your Android Studio Project, you need to add the following dependency in your build.gradle file:
+//        compile 'com.android.volley:volley:1.0.0'
+//
+//    1. Android Volley StringRequest.
+//       =StringRequest is used when you want the response returned in the form of a String. You can then parse the response using Gson or JSON as per your requirement.
+//
+//    syntax:-  StringRequest(int method, String url, Response.Listener<String> listener, Response.ErrorListener errorListener)
+//        • method : Expects an argument among GET, POST, PUT, DELETE.
+//        • url : URl to fetch the response at.
+//        • listener : Listens for a success response. We need to implement and override the following method in here.
+//        @Override
+//        public void onResponse(String response){
+//
+//        //response parameter is of the same type as defined in the constructor.
+//
+//        }
+//        • errorListener: Listens for an error response. We need to implement the following method in here.
+//
+//        @Override
+//        public void onErrorResponse(VolleyError error){
+//        //handle your error here. We'll look at
+//        }
+//
+//        • A sample code snippet of a string request is given below.
+//
+//
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+//        @Override
+//        public void onResponse(String response) {
+//        VolleyLog.wtf(response, "utf-8");
+//
+//        }
+//        }, new Response.ErrorListener() {
+//        @Override
+//        public void onErrorResponse(VolleyError error) {
+//        VolleyLog.wtf(error.getMessage(), "utf-8");
+//        }
+//        });
+//
+//        queue.add(stringRequest);
+//        }}
+//
+//        • Parameters and headers are specified as a key-value pair in the getParams() and getHeaders() methods respectively.
+//
+//        Note: getParams() method is ignored when the request type is a GET. So to pass parameters we’ll need to concatenate them in the URL string as shown below.
+//        String BASE_URL = "https://reqres.in";
+//        String url = String.format(BASE_URL + "/api/users?page=%1$s", "2");
+//
+//        2. Android Volley JsonObjectRequest.
+//            =JsonObjectRequest is used to send and receive JSONObject from the server. It extends the class JsonRequest.
+//
+//        • A sample code snippet of a JsonObjectRequest is given below.
+//
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+//        @Override
+//        public void onResponse(JSONObject response) {
+//        VolleyLog.wtf(response.toString());
+//
+//        }
+//        }, new Response.ErrorListener() {
+//        @Override
+//        public void onErrorResponse(VolleyError error) {
+//        VolleyLog.wtf(error.getMessage(), "utf-8");
+//        }
+//        });
+//        queue.add(jsonObjectRequest)
+//        }}
+//
+//      3. Android Volley JsonArrayRequest.
+//        =JsonArrayRequest is used to send and retrieve JSONArray to and from the server.
+//
+//       • A sample code snippet of a JsonArrayRequest is given below.
+//
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
+//        @Override
+//        public void onResponse(JSONArray response) {
+//
+//        }
+//        }, new Response.ErrorListener() {
+//        @Override
+//        public void onErrorResponse(VolleyError error) {
+//        VolleyLog.wtf(error.getMessage(), "utf-8");
+//
+//        }
+//        });
